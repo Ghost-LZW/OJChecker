@@ -1,4 +1,5 @@
-from src import caculate, checker, util
+from src.vjudge import caculate, util
+from src import checker
 
 print("login username: ")
 username = input()
@@ -49,5 +50,12 @@ for key, val in data[1].items():
 print('题目数量')
 totNum = int(input())
 #totNum = 13
-result = checker.check(data[0], totNum)
-result.save("result.xlsx")
+result = checker.check(data[0], totNum, './config/vjudge.xlsx')
+cnt = 0
+while True:
+    try:
+        result.save("result" + str(cnt) + ".xlsx")
+        break
+    except:
+        cnt += 1
+

@@ -3,11 +3,11 @@ from openpyxl import Workbook
 from openpyxl.styles import PatternFill
 
 
-def check(data, pnum):
-    fill = PatternFill("solid", fgColor="FF0000")
-    gfill = PatternFill("solid", fgColor="00FF00")
+def check(data, pnum, url):
+    fill = PatternFill("solid", fgColor="00FF00")
+    gfill = PatternFill("solid", fgColor="FF0000")
 
-    workbook = load_workbook('./config/vjudge.xlsx')
+    workbook = load_workbook(url)
     result = Workbook()
     rSheet = result.active
     rNow = 0
@@ -44,7 +44,7 @@ def check(data, pnum):
             continue
 
         rNow += 1
-        who = row[1].value
+        who = str(row[1].value)
         if who not in data or not data[who]['attempted']:
             rSheet.cell(rNow, 1).fill = gfill
             rSheet.cell(rNow, 1).value = row[0].value
@@ -60,8 +60,8 @@ def check(data, pnum):
                 val = row[1].value
             elif col == 3:
                 val = len(data[who]['solved'])
-                if who == 'lanzongwei':
-                    print(data[who])
+                #if who == 'lanzongwei':
+                #   print(data[who])
             elif col == 4:
                 val = data[who]['totTime'] // 60
             else:
