@@ -1,5 +1,7 @@
 # 为SDNU集训队处理比赛统计事宜
 
+由vjudgeChecker更名为OJchecker
+
 ## 使用方法
 
 1. 安装python3
