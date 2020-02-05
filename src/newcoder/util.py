@@ -33,8 +33,16 @@ def get_data():
 
     return data
 
+
 def get_contest(contest_id):
-    res = requests.get(f"https://ac.nowcoder.com/acm/contest/rank/submit-list?token=&currentContestId={contest_id}&contestList={contest_id}&_={int(time.time())}")
+    while True:
+        try:
+            res = requests.get(f"https://ac.nowcoder.com/acm/contest/rank/submit-list?token=&currentContestId={contest_id}&contestList={contest_id}&_={int(time.time())}")
+            break
+        except Exception as e:
+            print('error', str(e))
+            print('try again')
+
     return res.text
 
 def get_statu(val, ID) :
@@ -43,5 +51,12 @@ def get_statu(val, ID) :
     except:
         qname = val
     url = f"https://ac.nowcoder.com/acm/contest/status-list?token=&id={ID}&searchUserName={qname}&_={int(time.time())}"
-    res = requests.get(url)
-    return  res.text
+    while True:
+        try:
+            res = requests.get(url)
+            break
+        except Exception as e:
+            print('error', str(e))
+            print('try again')
+
+    return res.text

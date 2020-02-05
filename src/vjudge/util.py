@@ -12,10 +12,22 @@ def login(username, password):
         'password': password
     }
     seesion = requests.session()
-    response = seesion.post(logUrl, headers=headers, data=data)
+    while True:
+        try:
+            response = seesion.post(logUrl, headers=headers, data=data)
+            break
+        except Exception as e:
+            print('error', str(e))
+            print('try again')
     return response.cookies
 
 
 def get_contest(contest_id, cookies):
-    res = requests.get(f"https://vjudge.net/contest/rank/single/{contest_id}", cookies=cookies)
+    while True:
+        try:
+            res = requests.get(f"https://vjudge.net/contest/rank/single/{contest_id}", cookies=cookies)
+            break
+        except Exception as e:
+            print('error', str(e))
+            print('try again')
     return res.text
