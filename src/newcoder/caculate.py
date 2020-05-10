@@ -86,3 +86,21 @@ def after_solve(data, user, ID, endTime):
                     if which not in data[val]:
                         data[val][which] = 0
                     data[val][which] += 1
+
+
+def solve_rank(data, user, ID) :
+    for key, val in user.items():
+        rank = json.loads(util.get_rank(val, ID))
+        if val not in data:
+            data[val] = {}
+            data[val]['solved'] = []
+            data[val]['aSolved'] = []
+            data[val]['totTime'] = 0
+            data[val]['attempted'] = False
+            data[val]['rank'] = -1
+            continue
+        if len(rank['data']['rankData']) == 0:
+            data[val]['rank'] = -1
+            continue
+        data[val]['rank'] = rank['data']['rankData'][0]['ranking']
+

@@ -3,7 +3,7 @@ from openpyxl import Workbook
 from openpyxl.styles import PatternFill
 
 
-def check(data, pnum, url):
+def check(data, pnum, url, aboveRank=False):
     fill = PatternFill("solid", fgColor="00FF00")
     gfill = PatternFill("solid", fgColor="FF0000")
 
@@ -40,6 +40,8 @@ def check(data, pnum, url):
                 rSheet.cell(rNow, col).value = val
             for col in range(pnum):
                 rSheet.cell(rNow, 7 + col).value = chr(65 + col)
+            if aboveRank:
+                rSheet.cell(rNow, 7 + pnum).value = "Rank"
             first = False
             continue
 
@@ -60,8 +62,6 @@ def check(data, pnum, url):
                 val = row[1].value
             elif col == 3:
                 val = len(data[who]['solved'])
-                #if who == 'lanzongwei':
-                #   print(data[who])
             elif col == 4:
                 val = data[who]['totTime'] // 60
             else:
@@ -78,4 +78,7 @@ def check(data, pnum, url):
                 rSheet.cell(rNow, 7 + col).value = str(data[who][col] + solve) + '/' + str(solve)
             else:
                 rSheet.cell(rNow, 7 + col).value = '0/0'
+        if aboveRank:
+            rSheet.cell(rNow, 7 + pnum).value = data[who]['rank']
+
     return result

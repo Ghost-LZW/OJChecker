@@ -45,6 +45,7 @@ def get_contest(contest_id):
 
     return res.text
 
+
 def get_statu(val, ID) :
     try:
         qname = quote(val)
@@ -59,4 +60,20 @@ def get_statu(val, ID) :
             print('error', str(e))
             print('try again')
 
+    return res.text
+
+
+def get_rank(val, ID) :
+    try:
+        name = quote(val)
+    except:
+        name = val
+    url = f"https://ac.nowcoder.com/acm-heavy/acm/contest/real-time-rank-data?token=&id={ID}&searchUserName={name}&limit=0&_={int(time.time())}"
+    while True:
+        try:
+            res = requests.get(url)
+            break
+        except Exception as e:
+            print('error', str(e))
+            print('try again')
     return res.text
