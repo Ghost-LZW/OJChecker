@@ -3,9 +3,7 @@ from src import checker
 
 print('contest id:')
 ID = input()
-# ID = 3002
 user = util.get_data()
-# print(user)
 
 print('''
 input the Index
@@ -26,15 +24,10 @@ elif opt == 2:
 else:
     data, endTime = caculate.solve(json, user, True)
 
-# print(data)
-# print(data['32402'])
-
 caculate.after_solve(data, user, ID, endTime)
 
 print('题目数量')
 totNum = int(input())
-# totNum = 10
-print(data)
 result = checker.check(data, totNum, './config/newcoder.xlsx', opt == 1)
 cnt = 0
 while True:
