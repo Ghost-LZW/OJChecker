@@ -12,7 +12,9 @@
 
     vjudge数据保存为vjudge.xlsx
     
-    牛客数据保存为newcoder.xlsx
+    牛客数据保存为nowcoder.xlsx
+    
+    计蒜客数据保存为jisuanke.xlsx
 
 4. 使用
 
@@ -21,6 +23,8 @@
 python vjc.py
 #查询牛客
 python ncc.py
+#查询计蒜客
+python jsk.py
 ```
 
 5. 根据提示进行参数输入
@@ -38,6 +42,12 @@ python ncc.py
 4.题目提交数 --- 为每题提交次数， 显示为 总提交次数 / 是否AC
 
 5.未参加为红色，补完题为绿色
+
+6.Rank --- 为比赛排名
+
+## Hint
+
+由于计蒜客机制问题，暂未加入补题查询
 
 ## 后续更新(gugugu
 
