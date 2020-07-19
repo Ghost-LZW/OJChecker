@@ -1,10 +1,9 @@
 from src.vjudge import caculate, util
 from src import checker
+from getpass import getpass
 
-print("login username: ")
-username = input()
-print("login password: ")
-password = input()
+username = input("login username: ")
+password = getpass("login password: ")
 
 cookies = util.login(username, password)
 
@@ -15,7 +14,7 @@ contest.append(t)
 
 print("比赛序号 重现赛 #若无则回车")
 t = input()
-if len(t) :
+if len(t):
     contest.append(t)
 
 data = []
@@ -23,7 +22,7 @@ for cont in contest:
     json = util.get_contest(cont, cookies)
     data.append(caculate.solve(json))
 
-if len(t) :
+if len(t):
     for key, val in data[1].items():
         if key not in data[0]:
             data[0][key] = {}

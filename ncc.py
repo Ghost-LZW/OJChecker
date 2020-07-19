@@ -1,4 +1,4 @@
-from src.newcoder import util, caculate
+from src.nowcoder import util, caculate
 from src import checker
 
 print('contest id:')
@@ -28,7 +28,8 @@ caculate.after_solve(data, user, ID, endTime)
 
 print('题目数量')
 totNum = int(input())
-result = checker.check(data, totNum, './config/newcoder.xlsx', opt == 1)
+# print(data)
+result = checker.check(data, totNum, './config/nowcoder.xlsx', opt == 1)
 cnt = 0
 while True:
     try:
