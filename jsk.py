@@ -21,7 +21,7 @@ data, problem_num = caculate.solve(data['data'], user)
 
 # print(data)
 
-result = checker.check(data, problem_num, './config/jisuanke.xlsx', True)
+result = checker.check(data, problem_num, './config/jisuanke.xlsx', True, "jsk")
 
 # with open("./jsk.json", "w") as jsk:
 #    jsk.write(json.dumps(data))

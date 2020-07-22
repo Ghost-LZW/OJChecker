@@ -2,8 +2,10 @@ from openpyxl import load_workbook
 from openpyxl import Workbook
 from openpyxl.styles import PatternFill
 
+SPOJ = ["jsk"]
 
-def check(data, pnum, url, aboveRank=False):
+
+def check(data, pnum, url, aboveRank=False, OJName=""):
     fill = PatternFill("solid", fgColor="00FF00")
     gfill = PatternFill("solid", fgColor="FF0000")
 
@@ -63,7 +65,7 @@ def check(data, pnum, url, aboveRank=False):
             elif col == 3:
                 val = len(data[who]['solved'])
             elif col == 4:
-                val = data[who]['totTime'] // 60
+                val = data[who]['totTime'] // 60 if OJName not in SPOJ else data[who]['totTime']
             else:
                 val = len(data[who]['solved']) + len(data[who]['aSolved'])
                 if val == pnum:
